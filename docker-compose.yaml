@@ -1,0 +1,26 @@
+volumes:
+  osisearch:
+    external: true
+services:
+  app:
+    build:
+      context: app
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    environment:
+      DATABASE_URL: postgresql://osisearch:osisearch@db/osisearch
+  db:
+    build:
+      context: data
+      dockerfile: Dockerfile.dev
+    volumes:
+      - osisearch:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: patcerutti23
+      POSTGRES_DB: osisearch
+    ports:
+      - "15432:5432"
