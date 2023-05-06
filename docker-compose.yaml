@@ -1,6 +1,6 @@
 volumes:
   osisearch:
-    external: true
+    external: false
 services:
   app:
     build:

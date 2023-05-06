@@ -1,0 +1,34 @@
+# TODO
+
+## Product Requirements
+
+- [x] Searching for body parts
+- [x] Displaying related OSI codes
+- [x] Show recent/most common searches
+- [x] show unique searches and order them on most recent
+- [ ] focus table after search submit 
+	- Tried copying examples of fowardRef in [docs](https://legacy.reactjs.org/docs/forwarding-refs.html)
+	- Might need to use another approach with context?
+- [ ] No search results message
+
+## Design Requirments
+
+- [x] Rough Mockup of page
+- [x] Search Bar
+- [x] Results Table
+- [ ] Page formatting 
+- [ ] Side Nav for saved searches
+
+## Database
+
+- [ ] setup sqlite
+- [ ] search table
+- [ ] saved table
+
+## Bugs
+
+- [ ] Table select all not working
+
+
+## Maybe: Chrome Extension
+
