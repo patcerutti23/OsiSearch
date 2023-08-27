@@ -1,4 +1,5 @@
 import "./App.css";
+import Header from "./Header.js";
 import { useState } from "react";
 import * as React from "react";
 import { Autocomplete } from "@mantine/core";
@@ -11,17 +12,16 @@ import {
   rem,
   Button,
 } from "@mantine/core";
-import {
-  AppShell,
-  Navbar,
-  Header,
-  Footer,
-  Aside,
-  Text,
-  MediaQuery,
-  Burger,
-  useMantineTheme,
-} from "@mantine/core";
+// import {
+//   AppShell,
+//   Navbar,
+//   Footer,
+//   Aside,
+//   Text,
+//   MediaQuery,
+//   Burger,
+//   useMantineTheme,
+// } from "@mantine/core";
 
 export default function App() {
   const [search, setSearch] = useState("");
@@ -55,31 +55,30 @@ export default function App() {
     .map((item) => JSON.parse(item))
     .sort((a, b) => b.timeStamp - a.timeStamp);
   return (
-    <Layout>
-      <div className="App">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit();
-          }}
-        >
-          <Autocomplete
-            onChange={setSearch}
-            value={search}
-            placeholder="search"
-            data={suggestions.map(({ search }) => search)}
-          />
-        </form>
-        <Button
-          onClick={() => {
-            handleSubmit();
-          }}
-        >
-          Click
-        </Button>
-        <TableSelection data={result} />
-      </div>
-    </Layout>
+    <div className="App">
+      <Header />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
+        <Autocomplete
+          onChange={setSearch}
+          value={search}
+          placeholder="search"
+          data={suggestions.map(({ search }) => search)}
+        />
+      </form>
+      <Button
+        onClick={() => {
+          handleSubmit();
+        }}
+      >
+        Click
+      </Button>
+      <TableSelection data={result} />
+    </div>
   );
 }
 
@@ -148,85 +147,85 @@ export function TableSelection({ data }) {
   );
 }
 
-function Layout({ children }) {
-  const theme = useMantineTheme();
-  const [opened, setOpened] = useState(false);
-  return (
-    <MantineProvider
-      theme={{
-        ...theme,
-        colors: {
-          brand: [
-            "#F0BBDD",
-            "#ED9BCF",
-            "#EC7CC3",
-            "#ED5DB8",
-            "#F13EAF",
-            "#F71FA7",
-            "#FF00A1",
-            "#E00890",
-            "#C50E82",
-            "#AD1374",
-          ],
-        },
-        primaryColor: "brand",
-      }}
-    >
-      <AppShell
-        styles={{
-          main: {
-            background:
-              theme.colorScheme === "dark"
-                ? theme.colors.dark[8]
-                : theme.colors.gray[0],
-          },
-        }}
-        navbarOffsetBreakpoint="sm"
-        asideOffsetBreakpoint="sm"
-        navbar={
-          <Navbar
-            p="md"
-            hiddenBreakpoint="sm"
-            hidden={!opened}
-            width={{ sm: 200, lg: 300 }}
-          >
-            <Text>Application navbar</Text>
-          </Navbar>
-        }
-        aside={
-          <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-            <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
-              <Text>Favorites</Text>
-            </Aside>
-          </MediaQuery>
-        }
-        footer={
-          <Footer height={60} p="md">
-            Made By Dr. Patrick and co.
-          </Footer>
-        }
-        header={
-          <Header height={{ base: 50, md: 70 }} p="md">
-            <div
-              style={{ display: "flex", alignItems: "center", height: "100%" }}
-            >
-              <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-                <Burger
-                  opened={opened}
-                  onClick={() => setOpened((o) => !o)}
-                  size="sm"
-                  color={theme.colors.gray[6]}
-                  mr="xl"
-                />
-              </MediaQuery>
+// function Layout({ children }) {
+//   const theme = useMantineTheme();
+//   const [opened, setOpened] = useState(false);
+//   return (
+//     <MantineProvider
+//       theme={{
+//         ...theme,
+//         colors: {
+//           brand: [
+//             "#F0BBDD",
+//             "#ED9BCF",
+//             "#EC7CC3",
+//             "#ED5DB8",
+//             "#F13EAF",
+//             "#F71FA7",
+//             "#FF00A1",
+//             "#E00890",
+//             "#C50E82",
+//             "#AD1374",
+//           ],
+//         },
+//         primaryColor: "brand",
+//       }}
+//     >
+//       <AppShell
+//         styles={{
+//           main: {
+//             background:
+//               theme.colorScheme === "dark"
+//                 ? theme.colors.dark[8]
+//                 : theme.colors.gray[0],
+//           },
+//         }}
+//         navbarOffsetBreakpoint="sm"
+//         asideOffsetBreakpoint="sm"
+//         // navbar={
+//         //   <Navbar
+//         //     p="md"
+//         //     hiddenBreakpoint="sm"
+//         //     hidden={!opened}
+//         //     width={{ sm: 200, lg: 300 }}
+//         //   >
+//         //     <Text>Application navbar</Text>
+//         //   </Navbar>
+//         // }
+//         aside={
+//           <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
+//             <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+//               <Text>Favorites</Text>
+//             </Aside>
+//           </MediaQuery>
+//         }
+//         footer={
+//           <Footer height={60} p="md">
+//             Made By Dr. Patrick and co.
+//           </Footer>
+//         }
+//         header={
+//           <Header height={{ base: 50, md: 70 }} p="md">
+//             <div
+//               style={{ display: "flex", alignItems: "center", height: "100%" }}
+//             >
+//               <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+//                 <Burger
+//                   opened={opened}
+//                   onClick={() => setOpened((o) => !o)}
+//                   size="sm"
+//                   color={theme.colors.gray[6]}
+//                   mr="xl"
+//                 />
+//               </MediaQuery>
 
-              <Text>OsiSearch</Text>
-            </div>
-          </Header>
-        }
-      >
-        {children}
-      </AppShell>
-    </MantineProvider>
-  );
-}
+//               <Text>OsiSearch</Text>
+//             </div>
+//           </Header>
+//         }
+//       >
+//         {children}
+//       </AppShell>
+//     </MantineProvider>
+//   );
+// }

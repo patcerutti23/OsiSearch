@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.logo {
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  justify-content: center;
+  margin-left: 5px;
+  margin-top: 50px;
+  margin-right: 5px;
+
+}
+
+.OsiSearch-button {
+  display: inline-block;
+
+}
